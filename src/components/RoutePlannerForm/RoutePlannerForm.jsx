@@ -8,8 +8,13 @@ import AddIcon from '../../assets/add-icon.svg'
 import RouteCTAButton from '../RouteCTAButton/RouteCTAButton';
 
 const RoutePlannerForm = () => {
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault()
+  }
+
   return (
-    <RoutePlannerFormContainer>
+    <RoutePlannerFormContainer onSubmit={formSubmissionHandler}>
         <div className='form-input-container'>
           <RoutePlannerInput labelName={"Origin"} inputImg={OriginMark} placeholder={"Enter your origin location"} />
           
@@ -24,7 +29,7 @@ const RoutePlannerForm = () => {
 
           <RoutePlannerInput labelName={"Destination"} inputImg={DestinationMark} placeholder={"Enter your destination location"} />
         </div>
-        
+
         <div className='route-cta-wrapper'>
           <RouteCTAButton btnText={"Calculate"}/>
         </div>
