@@ -31,12 +31,6 @@ export const RouteMapPlannerContainer = styled.div`
         flex-direction: column;
         gap: 45px;
 
-        .route-planner-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .route-plan-container {
             display: flex;
             flex-direction: column;
@@ -119,10 +113,6 @@ export const RouteMapPlannerContainer = styled.div`
 
         .route-planner-wrapper {
             width: 100%;
-            .route-planner-container {
-                flex-direction: column;
-                gap: 30px;
-            }
 
             .route-plan-container {
                 .route-distance-wrapper {

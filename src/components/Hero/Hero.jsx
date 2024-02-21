@@ -12,13 +12,7 @@ const Hero = () => {
 
         <RouteMapPlannerContainer>
           <div className='route-planner-wrapper'>
-            <div className="route-planner-container">
-              <RoutePlannerForm />
-
-              <div className='route-cta-wrapper'>
-                <RouteCTAButton btnText={"Calculate"}/>
-              </div>
-            </div>
+            <RoutePlannerForm />
 
             <div className="route-plan-container">
               <div className="route-distance-wrapper">
