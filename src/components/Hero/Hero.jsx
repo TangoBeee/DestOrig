@@ -1,6 +1,5 @@
 import React from 'react'
 import { HeroContainer, RouteMapPlannerContainer } from './Hero.styled'
-import RouteCTAButton from '../RouteCTAButton/RouteCTAButton'
 import RoutePlannerForm from '../RoutePlannerForm/RoutePlannerForm'
 
 const Hero = () => {
