@@ -16,10 +16,10 @@ const RoutePlannerForm = () => {
   return (
     <RoutePlannerFormContainer onSubmit={formSubmissionHandler}>
         <div className='form-input-container'>
-          <RoutePlannerInput labelName={"Origin"} inputImg={OriginMark} placeholder={"Enter your origin location"} />
+          <RoutePlannerInput labelName={"Origin"} inputimg={OriginMark} placeholder={"Enter your origin location"} />
           
           <div className='stop-input-wrapper'>
-              <RoutePlannerInput labelName={"Stop"} inputImg={StopMark} placeholder={"Add a stop"} />
+              <RoutePlannerInput labelName={"Stop"} inputimg={StopMark} placeholder={"Add a stop"} />
               
               <button>
                   <img src={AddIcon} alt="add-stop-icon" />
@@ -27,7 +27,7 @@ const RoutePlannerForm = () => {
               </button>
           </div>
 
-          <RoutePlannerInput labelName={"Destination"} inputImg={DestinationMark} placeholder={"Enter your destination location"} />
+          <RoutePlannerInput labelName={"Destination"} inputimg={DestinationMark} placeholder={"Enter your destination location"} />
         </div>
 
         <div className='route-cta-wrapper'>

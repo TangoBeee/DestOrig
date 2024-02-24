@@ -22,7 +22,7 @@ export const RoutePlannerInputContainer = styled.div`
         font-weight: 600;
         font-family: 'IBM Plex Sans', sans-serif;
         line-height: 19.2px;
-        background: url(${p => p.inputImg}) no-repeat left;
+        background: url(${p => p.inputimg}) no-repeat left;
         background-size: 16px;
         background-position-x: 15px;
         outline: 0;
