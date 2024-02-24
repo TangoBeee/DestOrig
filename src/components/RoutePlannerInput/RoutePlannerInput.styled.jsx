@@ -14,22 +14,26 @@ export const RoutePlannerInputContainer = styled.div`
         line-height: 16.8px;
     }
 
-    input {
-        padding: 15px 40px;
-        border: 1px solid #DCDDEC;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 600;
-        font-family: 'IBM Plex Sans', sans-serif;
-        line-height: 19.2px;
-        background: url(${p => p.inputimg}) no-repeat left;
-        background-size: 16px;
-        background-position-x: 15px;
-        outline: 0;
+    .input-wrapper {
+        width: 100%;
 
-        &::placeholder {
-            font-size: 15px;
-            font-weight: 400;
+        input {
+            padding: 15px 40px;
+            border: 1px solid #DCDDEC;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'IBM Plex Sans', sans-serif;
+            line-height: 19.2px;
+            background: url(${p => p.inputimg}) no-repeat left;
+            background-size: 16px;
+            background-position-x: 15px;
+            outline: 0;
+
+            &::placeholder {
+                font-size: 15px;
+                font-weight: 400;
+            }
         }
     }
 

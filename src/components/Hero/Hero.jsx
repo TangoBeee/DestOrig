@@ -1,27 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HeroContainer, RouteMapPlannerContainer } from './Hero.styled'
 import RoutePlannerForm from '../RoutePlannerForm/RoutePlannerForm'
+import {
+  useJsApiLoader,
+  GoogleMap,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
+import { Toaster } from 'react-hot-toast'
 
 const Hero = () => {
+  const [directions, setDirections] = useState(null)
+  const [distance, setDistance] = useState('0 km')
+  const [origin, setOrigin] = useState('Origin')
+  const [destination, setDestination] = useState('Destination')
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    libraries: ["places"],
+  });
+
+  const onDirectionsLoad = (directionsResult) => {
+    setDirections(directionsResult);
+    setDistance(
+      directionsResult.routes[0].legs[0].distance.text || "Distance Not Found"
+    );
+  };
+
   return (
     <HeroContainer>
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+      />
         <div className='main-heading'>
             Let's calculate <span>distance</span> from Google maps
         </div>
 
         <RouteMapPlannerContainer>
           <div className='route-planner-wrapper'>
-            <RoutePlannerForm />
+            <RoutePlannerForm onDirectionsLoad={onDirectionsLoad} setOriginValue={setOrigin} setDestinationValue={setDestination} />
 
             <div className="route-plan-container">
               <div className="route-distance-wrapper">
                 <h2>Distance</h2>
 
-                <div className="distance">1,427 kms</div>
+                <div className="distance">{distance}</div>
               </div>
 
               <div className="route-info">
-                <p>The distance between <span>Mumbai</span> and <span>Delhi</span> via the seleted route is <span>1,427 kms</span>.</p>
+                <p>The distance between <span>{origin}</span> and <span>{destination}</span> via the seleted route is <span>{distance}</span>.</p>
               </div>
             </div>
           </div>
@@ -29,15 +56,20 @@ const Hero = () => {
           <hr className='separator' />
           
           <div className='route-map-wrapper'>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.5851827611!2d-0.2664023117250886!3d51.52852620494017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sin!4v1708351972056!5m2!1sen!2sin"
-            width="560px"
-            height="551px"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+            {isLoaded && (
+              <GoogleMap
+                center={{ lat: 0.0, lng: 0.0 }}
+                zoom={1.2}
+                mapContainerStyle={{ width: "100%", height: "100%" }}
+                options={{
+                  zoomControl: false,
+                  streetViewControl: false,
+                  mapTypeControl: false,
+                }}
+              >
+                {directions && <DirectionsRenderer directions={directions} />}
+              </GoogleMap>
+            )}
           </div>
         </RouteMapPlannerContainer>
         

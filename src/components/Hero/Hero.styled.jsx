@@ -77,6 +77,11 @@ export const RouteMapPlannerContainer = styled.div`
         }
     }
 
+    .route-map-wrapper {
+        width: 560px;
+        height: 540px;
+    }
+
     .separator {
         display: none;
     }
